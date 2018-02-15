@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aDigitalWebSite.Web", "aDigitalWebSite.Web\aDigitalWebSite.Web.csproj", "{EAA61B61-4976-447D-9058-0A80A79E9E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aDigital.NextWeb", "aDigital.NextWeb\aDigital.NextWeb.csproj", "{78F3D94C-CC94-4B94-AF4D-9025F71ADFF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAA61B61-4976-447D-9058-0A80A79E9E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA61B61-4976-447D-9058-0A80A79E9E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA61B61-4976-447D-9058-0A80A79E9E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA61B61-4976-447D-9058-0A80A79E9E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78F3D94C-CC94-4B94-AF4D-9025F71ADFF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78F3D94C-CC94-4B94-AF4D-9025F71ADFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78F3D94C-CC94-4B94-AF4D-9025F71ADFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78F3D94C-CC94-4B94-AF4D-9025F71ADFF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
