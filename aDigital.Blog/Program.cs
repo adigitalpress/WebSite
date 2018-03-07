@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace aDigital.NextWeb
+namespace aDigital.Blog
 {
 	public class Program
 	{
@@ -20,6 +20,8 @@ namespace aDigital.NextWeb
 		public static IWebHost BuildWebHost(string[] args) =>
 			WebHost.CreateDefaultBuilder(args)
 				.UseStartup<Startup>()
+				.UseKestrel()
+		   		.UseUrls(new string[] { "http://0.0.0.0:5000", "http://10.0.0.225:5000" })
 				.Build();
 	}
 }

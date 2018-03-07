@@ -55,7 +55,13 @@
                 <nav id="fh5co-main-nav" role="navigation">
                     <ul>
                         <li><a href="/home/about">Quem Somos</a></li>
-                        <li class="has-sub">
+                        <li>
+                            <div >
+                                <a href="/services">Serviços</a>
+                            </div>
+                        </li>
+                                <!--
+                                <li class="has-sub">
                             <div class="drop-down-menu">
                                 <a href="/services">Serviços</a>
                                 <div class="dropdown-menu-wrap">
@@ -80,6 +86,8 @@
                                 </div>
                             </div>
                         </li>
+                                -->
+                        <li><a href="/blog">Blog</a></li>
                         <li class="cta"><a href="/home/contact">Fale Conosco</a></li>
                     </ul>
                 </nav>
@@ -146,6 +154,10 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
- 
+    <script type="text/javascript">
+    $(document).ready(function () {
+    @RenderSection("DocumentReady", false)
+    });
+</script>
     </body>
 </html>

@@ -16,5 +16,9 @@
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Views\Blog\" />
+    <Folder Include="Views\Posts\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="Views\Services\" />
   </ItemGroup>
 </Project>

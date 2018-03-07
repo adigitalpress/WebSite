@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,7 +34,8 @@ namespace aDigitalWebSite.Web
 			}
 			else
 			{
-				app.UseExceptionHandler("/Home/Error");
+				app.UseStatusCodePagesWithReExecute("/error/index/{0}");
+				app.UseExceptionHandler("/error/index/500");
 			}
 
 			app.UseStaticFiles();
@@ -41,8 +43,12 @@ namespace aDigitalWebSite.Web
 			app.UseMvc(routes =>
 			{
 				routes.MapRoute(
+					name: "posts",
+					template: "Posts/{id}",
+					defaults: new { controller = "Posts", action = "Index" });
+				routes.MapRoute(
 					name: "default",
-					template: "{controller=Home}/{action=Index}/{id?}");
+					template: "{controller=Home}/{action=Index}/{id:int?}");
 			});
 		}
 	}
