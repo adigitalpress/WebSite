@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.2.1" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.362" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,11 +16,13 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\jss\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Posts\" />
     <Folder Include="Views\Error\" />
     <Folder Include="Views\Services\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Infrastructure\Filters\" />
   </ItemGroup>
 </Project>

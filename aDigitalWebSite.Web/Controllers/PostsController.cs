@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using aDigitalWebSite.Web.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aDigitalWebSite.Web.Controllers
 {
-	public class PostsController : Controller
+	public class PostsController : BaseController
 	{
 		public PostsController()
 		{

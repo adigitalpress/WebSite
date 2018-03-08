@@ -5,10 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using aDigitalWebSite.Web.Models;
+using aDigitalWebSite.Web.Infrastructure;
 
 namespace aDigitalWebSite.Web.Controllers
 {
-	public class HomeController : Controller
+	public class HomeController : BaseController
 	{
 		public IActionResult Index()
 		{

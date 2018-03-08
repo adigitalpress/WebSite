@@ -5,19 +5,30 @@
     "outputFileName": "wwwroot/css/site.min.css",
     // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
-      "wwwroot/css/site.css"
+      "wwwroot/css/bootstrap.css",
+      "wwwroot/css/icomoon.css",
+      "wwwroot/css/owl.carousel.min.css",
+      "wwwroot/css/owl.theme.default.min.css",
+      "wwwroot/css/style.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/site.min.js",
+    "outputFileName": "wwwroot/jss/site.min.js",
     "inputFiles": [
-      "wwwroot/js/site.js"
+      "wwwroot/jss/jquery.min.js",
+      "wwwroot/jss/jquery.easing.1.3.js",
+      "wwwroot/jss/bootstrap.min.js",
+      "wwwroot/jss/main.js",
+      "wwwroot/jss/modernizr-2.6.2.min.js",
+      "wwwroot/jss/owl.carousel.min.js",
+      "wwwroot/jss/respond.min.js",
     ],
     // Optionally specify minification options
     "minify": {
       "enabled": true,
       "renameLocals": true
     },
+    "includeInProject": false,
     // Optionally generate .map file
     "sourceMap": false
   }
