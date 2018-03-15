@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using aDigital.Library;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aDigital.Blog.Controllers
 {
-	[Route("[controller]")]
+	[Route("api/Values/")]
 	public class ValuesController : Controller
 	{
+		IBlogServices _services;
+		public ValuesController(IBlogServices services)
+		{
+			_services = services;
+		}
 		// GET api/values
 		[HttpGet]
 		public IEnumerable<string> Get()
@@ -20,7 +26,7 @@ namespace aDigital.Blog.Controllers
 		[HttpGet("{id}")]
 		public string Get(int id)
 		{
-			return "value";
+			return _services.Config();
 		}
 
 		// POST api/values

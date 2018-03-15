@@ -5,13 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
-    <PackageReference Include="Unity" Version="5.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Microsoft.WindowsAzure.ConfigurationManager" Version="3.2.3" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,5 +19,8 @@
     <ProjectReference Include="..\aDigital.Library\aDigital.Library.csproj" />
     <ProjectReference Include="..\aDigital.Blog.Infra\aDigital.Blog.Infra.csproj" />
     <ProjectReference Include="..\aDigital.Blog.Domain\aDigital.Blog.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="UnityInfra.cs" />
   </ItemGroup>
 </Project>

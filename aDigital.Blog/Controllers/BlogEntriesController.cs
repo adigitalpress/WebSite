@@ -9,7 +9,6 @@ using Newtonsoft.Json;
 
 namespace aDigital.Blog.Controllers
 {
-	[Route("[controller]")]
 	public class BlogEntriesController : ControllerFundation
 	{
 		IBlogServices _services;
@@ -19,10 +18,11 @@ namespace aDigital.Blog.Controllers
 		}
 
 		// GET api/values/5
-		[HttpGet("{id?}")]
-		public async Task<IEnumerable<IBlogEntry>> Get(int id)
+		[HttpGet("/blogEntries/{id?}")]
+		public async Task<IEnumerable<IBlogEntry>> Get(string id)
 		{
-			return await _services.List(10, id);
+			var res = await _services.List(id);
+			return new List<IBlogEntry>() { res };
 		}
 	}
 }

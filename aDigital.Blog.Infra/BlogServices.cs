@@ -14,9 +14,20 @@ namespace aDigital.Blog.Infra
 			_repo = repo;
 		}
 
+		public string Config()
+		{
+			return _repo.Config();
+		}
+
 		public async Task<IEnumerable<IBlogEntry>> List(int pageSize, int pageNumber)
 		{
 			return await _repo.List();
+		}
+
+		public async Task<IBlogEntry> List(string id)
+		{
+			var posts = await _repo.List(id);
+			return posts;
 		}
 
 		public async Task<IEnumerable<IBlogEntry>> ListTop5()

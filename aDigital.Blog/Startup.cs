@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using aDigital.Blog.Controllers;
 using aDigital.Blog.Infra;
 using aDigital.Library;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Unity;
 
 namespace aDigital.Blog
 {
@@ -25,41 +19,35 @@ namespace aDigital.Blog
 		}
 
 		public IConfiguration Configuration { get; }
+		public IContainer ApplicationContainer { get; private set; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public IServiceProvider ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc();
 
-			// Creating the UnityServiceProvider
-			var unityServiceProvider = new UnityServiceProvider();
+			// Create the container builder.
+			var builder = new ContainerBuilder();
 
-			IUnityContainer container = unityServiceProvider.UnityContainer;
+			// Register dependencies, populate the services from
+			// the collection, and build the container. If you want
+			// to dispose of the container at the end of the app,
+			// be sure to keep a reference to it as a property or field.
+			//
+			// Note that Populate is basically a foreach to add things
+			// into Autofac that are in the collection. If you register
+			// things in Autofac BEFORE Populate then the stuff in the
+			// ServiceCollection can override those things; if you register
+			// AFTER Populate those registrations can override things
+			// in the ServiceCollection. Mix and match as needed.
+			builder.Populate(services);
+			builder.RegisterType<BlogRepository>().As<IBlogRepository>().WithParameter(new TypedParameter(typeof(string), Configuration["azureStorageConnectionString"] ?? "NULL"));
+			builder.RegisterType<BlogServices>().As<IBlogServices>();
 
-			// Adding the Controller Activator
-			// Caution!!! Do this before you Build the ServiceProvider !!!
-			services.AddSingleton<IControllerActivator>(new UnityControllerActivator(container));
+			this.ApplicationContainer = builder.Build();
 
-			//Now build the Service Provider
-			var defaultProvider = services.BuildServiceProvider();
-
-			// Configure UnityContainer
-			// #region Unity
-
-			//Add the Fallback extension with the default provider
-			container.AddExtension(new UnityFallbackProviderExtension(defaultProvider));
-
-			// Register custom Types here
-
-			container.RegisterType<IBlogServices, BlogServices>();
-			container.RegisterType<IBlogRepository, BlogRepository>();
-			//container.RegisterType<IServer,Kest>
-			container.RegisterType<BlogEntriesController>();
-			//container.RegisterType<AuthController>();
-
-			// #endregion Unity
-
-			return unityServiceProvider;
+			// Create the IServiceProvider based on the container.
+			return new AutofacServiceProvider(this.ApplicationContainer);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

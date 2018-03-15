@@ -21,7 +21,7 @@ namespace aDigital.Blog
 			WebHost.CreateDefaultBuilder(args)
 				.UseStartup<Startup>()
 				.UseKestrel()
-		   		.UseUrls(new string[] { "http://0.0.0.0:5000", "http://10.0.0.225:5000" })
+				.UseUrls(new string[] { "http://0.0.0.0:5000"/*, "http://10.0.0.225:5000"*/ })
 				.Build();
 	}
 }

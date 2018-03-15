@@ -8,5 +8,7 @@ namespace aDigital.Library
 	{
 		Task<IEnumerable<IBlogEntry>> ListTop5();
 		Task<IEnumerable<IBlogEntry>> List(int pageSize, int pageNumber);
+		Task<IBlogEntry> List(string id);
+		string Config();
 	}
 }

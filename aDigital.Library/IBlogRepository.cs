@@ -6,7 +6,9 @@ namespace aDigital.Library
 {
 	public interface IBlogRepository
 	{
-		Task<IEnumerable<BlogEntryDTO>> List();
+		Task<IEnumerable<IBlogEntry>> List();
+		Task<IBlogEntry> List(string id);
 		Task<bool> Save(BlogEntryDTO blogEntry);
+		string Config();
 	}
 }
