@@ -55,4 +55,10 @@ Global
 		{F6D0F05D-1B2A-4BA4-8F9E-1CE58E8C22CA} = {2CFF84E8-DE58-4AAA-A48D-BDCE954A2DFD}
 		{E69A64AC-7599-4DE0-9F6A-987498813474} = {2CFF84E8-DE58-4AAA-A48D-BDCE954A2DFD}
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.VersionControlPolicy = $2
+	EndGlobalSection
 EndGlobal

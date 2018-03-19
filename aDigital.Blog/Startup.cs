@@ -41,7 +41,8 @@ namespace aDigital.Blog
 			// AFTER Populate those registrations can override things
 			// in the ServiceCollection. Mix and match as needed.
 			builder.Populate(services);
-			builder.RegisterType<BlogRepository>().As<IBlogRepository>().WithParameter(new TypedParameter(typeof(string), Configuration["azureStorageConnectionString"] ?? "NULL"));
+			var strConn = Configuration["azureStorageConnectionString"];
+			builder.RegisterType<BlogRepository>().As<IBlogRepository>().WithParameter(new TypedParameter(typeof(string), strConn ?? "NULL"));
 			builder.RegisterType<BlogServices>().As<IBlogServices>();
 
 			this.ApplicationContainer = builder.Build();
