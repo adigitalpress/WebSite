@@ -12,13 +12,17 @@ namespace aDigital.Blog.Infra
 	public class BlogRepository : IBlogRepository
 	{
 		string _storageConnectionString;
-		CloudTable _table;
+		public CloudTable _table;
 		public BlogRepository(string storageConnectionString)
 		{
 			_storageConnectionString = storageConnectionString;
 			CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_storageConnectionString);
 			var tableClient = storageAccount.CreateCloudTableClient();
 			_table = tableClient.GetTableReference("blogPosts");
+		}
+		public BlogRepository()
+		{
+			//constructor for testing propurses
 		}
 
 		public string Config()

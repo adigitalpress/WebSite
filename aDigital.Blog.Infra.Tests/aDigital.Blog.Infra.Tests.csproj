@@ -10,9 +10,12 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+    <PackageReference Include="Moq" Version="4.8.2" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\aDigital.Blog.Infra\aDigital.Blog.Infra.csproj" />
+    <ProjectReference Include="..\aDigital.Library\aDigital.Library.csproj" />
   </ItemGroup>
 </Project>
