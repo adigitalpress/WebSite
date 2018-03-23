@@ -3,8 +3,10 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+ <!--<![endif]-->
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>aDigital.Press</title>
@@ -12,6 +14,8 @@
     <meta name="description" content="aDigital.Press - Serviços Gráficos em Geral" />
     <meta name="keywords" content="adigital.press, digital, adigital, design, grafica, impressao, xerox, plotagem, plotter, impressao colorida, xerox colorido, xerox" />
     <meta name="author" content="Leonardo Augusto Lima Ferreira" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="aDigital.Press" />
     @RenderSection("openGraphIntegration")
 
     <environment include="Development">
@@ -21,10 +25,10 @@
         <link rel="stylesheet" href="@ViewBag.RootBlobURL/css/animate.css">
         <link rel="stylesheet" href="@ViewBag.RootBlobURL/css/bootstrap.css">
         <link rel="stylesheet" href="@ViewBag.RootBlobURL/css/icomoon.css">
-     
+
         <link rel="stylesheet" href="@ViewBag.RootBlobURL/css/owl.carousel.min.css">
         <link rel="stylesheet" href="@ViewBag.RootBlobURL/css/owl.theme.default.min.css">
-     
+
         <link rel="stylesheet" href="@ViewBag.RootBlobURL/css/style.css">
         <script src="@ViewBag.RootBlobURL/jss/modernizr-2.6.2.min.js"></script>
         <!--[if lt IE 9]>
@@ -34,109 +38,111 @@
     <environment exclude="Development">
         <link rel="stylesheet" href="@ViewBag.RootBlobURL/css/site.min.css">
     </environment>
-    </head>
-    <body class="boxed">
- 
+</head>
+<body class="boxed">
+
     <!-- Loader -->
     <div class="fh5co-loader"></div>
- 
+
     <div id="wrap">
- 
-    <div id="fh5co-page">
-        <header id="fh5co-header" role="banner">
-            <div class="container">
-                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-                <div id="fh5co-logo"><a href="/"><img src="@ViewBag.RootBlobURL/images/logo.png" alt="aDigital.Press"></a></div>
-                <nav id="fh5co-main-nav" role="navigation">
-                    <ul>
-                        <li><a href="/home/about">Quem Somos</a></li>
-                        <li>
-                            <div >
-                                <a href="/services">Serviços</a>
-                            </div>
-                        </li>
-                                <!--
-                                <li class="has-sub">
-                            <div class="drop-down-menu">
-                                <a href="/services">Serviços</a>
-                                <div class="dropdown-menu-wrap">
-                                    <ul>
-                                        <li><a href="#">Web Development</a></li>
-                                        <li><a href="#">Web Design</a></li>
-                                        <li><a href="#">Graphic Design</a></li>
-                                        <li><a href="#">Branding</a></li>
-                                    </ul>
+
+        <div id="fh5co-page">
+            <header id="fh5co-header" role="banner">
+                <div class="container">
+                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
+                    <div id="fh5co-logo"><a href="/"><img src="@ViewBag.RootBlobURL/images/logo.png" alt="aDigital.Press"></a></div>
+                    <nav id="fh5co-main-nav" role="navigation">
+                        <ul>
+                            <li><a href="/home/about">Quem Somos</a></li>
+                            <li>
+                                <div>
+                                    <a href="/services">Serviços</a>
                                 </div>
-                            </div>
-                        </li>
-                        <li><a href="/portfolio">Portfólio</a></li>
-                        <li class="has-sub">
-                            <div class="drop-down-menu">
-                                <a href="#">Sidebars</a>
-                                <div class="dropdown-menu-wrap">
-                                    <ul>
-                                        <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                                        <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                                    </ul>
+                            </li>
+                            <!--
+                                    <li class="has-sub">
+                                <div class="drop-down-menu">
+                                    <a href="/services">Serviços</a>
+                                    <div class="dropdown-menu-wrap">
+                                        <ul>
+                                            <li><a href="#">Web Development</a></li>
+                                            <li><a href="#">Web Design</a></li>
+                                            <li><a href="#">Graphic Design</a></li>
+                                            <li><a href="#">Branding</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
+                            </li>
+                            <li><a href="/portfolio">Portfólio</a></li>
+                            <li class="has-sub">
+                                <div class="drop-down-menu">
+                                    <a href="#">Sidebars</a>
+                                    <div class="dropdown-menu-wrap">
+                                        <ul>
+                                            <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                                            <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                                    -->
+                            <li><a href="/blog">Blog</a></li>
+                            <li class="cta"><a href="/home/contact">Fale Conosco</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <!-- Header -->
+            @RenderBody()
+            <hr />
+            <footer id="fh5co-footer" role="contentinfo">
+                <div class="container">
+                    <div class="row row-bottom-padded-sm">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="fh5co-footer-widget">
+                                <h3>Informações</h3>
+                                <p>
+                                    Estamos localizados na loja 5 do Ed. Wall Street, na <a href="https://goo.gl/maps/azyNo78iZA92">Avenida do Contorno, 8000, Santo Agostinho.</a> <br />
+                                    Abrimos nossas portas de segunda a sexta as 8 da manhã e fechamos não antes das 18h.
+                                    <br />Entre em contato via <a href="tel:+553125274162">(31)2527-4162</a> ou pelo email <a href="mailTo:contato@adigital.press">contato@aDigital.Press</a>
+                                </p>
                             </div>
-                        </li>
-                                -->
-                        <li><a href="/blog">Blog</a></li>
-                        <li class="cta"><a href="/home/contact">Fale Conosco</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <!-- Header -->
-        @RenderBody()
-        <hr />
-        <footer id="fh5co-footer" role="contentinfo">
-            <div class="container">
-                <div class="row row-bottom-padded-sm">
-                    <div class="col-md-4 col-sm-12">
-                        <div class="fh5co-footer-widget">
-                            <h3>Informações</h3>
-                            <p>Estamos localizados na loja 5 do Ed. Wall Street, na <a href="https://goo.gl/maps/azyNo78iZA92">Avenida do Contorno, 8000, Santo Agostinho.</a> <br/>
-                               Abrimos nossas portas de segunda a sexta as 8 da manhã e fechamos não antes das 18h. 
-                               <br/>Entre em contato via <a href="tel:+553125274162">(31)2527-4162</a> ou pelo email <a href="mailTo:contato@adigital.press">contato@aDigital.Press</a></p>
+                        </div>
+                        <div class="col-md-3 col-md-push-1 col-sm-12 col-sm-push-0">
+                            <div class="fh5co-footer-widget">
+                                <h3>Rápidos Links:</h3>
+                                <ul class="fh5co-footer-link">
+                                    <li><a href="/">Home</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-md-push-2 col-sm-12 col-sm-push-0">
+
+                            <div class="fh5co-footer-widget">
+                                <h3>Follow us</h3>
+                                <ul class="fh5co-social">
+                                    <li class="facebook"><a href="https://facebook.com/adigital.press"><i class="icon-facebook2"></i></a></li>
+                                    <!--<li class="twitter"><a href="#"><i class="icon-twitter"></i></a></li>
+                                    <li class="linkedin"><a href="#"><i class="icon-linkedin"></i></a></li>-->
+                                    <li class="message"><a href="mailTo:contato@adigital.press"><i class="icon-mail"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-md-push-1 col-sm-12 col-sm-push-0">
-                        <div class="fh5co-footer-widget">
-                            <h3>Rápidos Links:</h3>
-                            <ul class="fh5co-footer-link">
-                                <li><a href="/">Home</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-md-push-2 col-sm-12 col-sm-push-0">
-                        
-                        <div class="fh5co-footer-widget">
-                            <h3>Follow us</h3>
-                            <ul class="fh5co-social">
-                                <li class="facebook"><a href="https://facebook.com/adigital.press"><i class="icon-facebook2"></i></a></li>
-                                <!--<li class="twitter"><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li class="linkedin"><a href="#"><i class="icon-linkedin"></i></a></li>-->
-                                <li class="message"><a href="mailTo:contato@adigital.press"><i class="icon-mail"></i></a></li>
-                            </ul>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="fh5co-copyright">
+                                <p class="pull-left">&copy; 2016 Free Template. All Rights Reserved. </p>
+                                <p class="pull-right">Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
- 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="fh5co-copyright">
-                            <p class="pull-left">&copy; 2016 Free Template. All Rights Reserved. </p>
-                            <p class="pull-right">Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
-    </div>
- 
+
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-chevron-down"></i></a>
     </div>
@@ -156,5 +162,5 @@
         @RenderSection("DocumentReady", false)
         });
     </script>
-    </body>
+</body>
 </html>
