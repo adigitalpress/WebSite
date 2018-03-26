@@ -2,52 +2,69 @@
     ViewData["Title"] = "Contact";
 }
 @section openGraphIntegration
-{
-    <meta property="og:title" content="Contato"/>
-    <meta property="og:image" itemprop="image" content="http://blob.adigital.press/images/logoBig.png"/>
-    <meta property="og:url" content="http://aDigital.Press/Home/Contact"/>
-    <meta property="og:site_name" content="aDigital.Press"/>
-    <meta property="og:description" content="Fale Conosco"/>
+    {
+    <meta property="og:title" content="Contato" />
+    <meta property="og:image" itemprop="image" content="http://blob.adigital.press/images/logoBig.png" />
+    <meta property="og:url" content="http://aDigital.Press/Home/Contact" />
+    <meta property="og:description" content="Fale Conosco" />
     <meta property="og:type" content="website" />
 }
 <div id="fh5co-intro" class="fh5co-section">
-<div class="container">
-    <div class="row row-bottom-padded-sm">
-        <div class="col-md-8 col-md-offset-2 text-center ts-intro">
-            <h1>Fale Conosco</h1>
-            <p class="fh5co-lead">Precisa de um orçamento? Talvez já fazer um pedido? Críticas, reclamações ou sugestões? Quer deixar o curriculum? Para tudo isso, o lugar é aqui!</p>
+    <div class="container">
+        <div class="row row-bottom-padded-sm">
+            <div class="col-md-8 col-md-offset-2 text-center ts-intro">
+                <h1>Fale Conosco</h1>
+                <p class="fh5co-lead">Precisa de um orçamento? Talvez já fazer um pedido? Críticas, reclamações ou sugestões? Quer deixar o curriculum? Para tudo isso, o lugar é aqui!</p>
+            </div>
         </div>
-    </div>
-    <div class="row row-bottom-padded-sm">
-        <div class="col-md-6" id="fh5co-content">
-            <form action="#" method="post">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" class="form-control" id="name">
+        <div class="row row-bottom-padded-sm">
+            <div class="col-md-6" id="fh5co-content">
+                <form action="/home/contact" method="post" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" class="form-control" id="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea name="message" id="Message" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" class="btn btn-primary" value="Enviar" id="OKButton">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4 col-md-push-1 col-sm-12 col-sm-push-0" id="fh5co-sidebar">
+                <div class="fh5co-contact-info">
+                    <h3>Informações de Contato</h3>
+                    <address>
+                        Avenida do Contorno, 8000, Loja 5
+                    </address>
+                    <p>Tel: +55 31 2527-4162</p>
+                    <p>Email: <a href="#">contato@adigital.press</a></p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="name">
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensagem</label>
-                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Enviar">
-                </div>
-            </form>
-        </div>
-        <div class="col-md-4 col-md-push-1 col-sm-12 col-sm-push-0" id="fh5co-sidebar">
-            <div class="fh5co-contact-info">
-                <h3>Informações de Contato</h3>
-                <address>
-                    Avenida do Contorno, 8000, Loja 5
-                </address>
-                <p>Tel: +55 31 2527-4162</p>
-                <p>Email: <a href="#">contato@adigital.press</a></p>
             </div>
         </div>
     </div>
 </div>
-</div>
+@section DocumentReady{
+    $("#OKButton").on("click",submitform);
+}
+@section LocalScripts {
+    @Html.Raw(@"function submitform() {
+var fdata = {};
+fdata.Name = $('#Name').val();
+fdata.Email = $('#Email').val();
+fdata.Message = $('#Message').val();
+var info = JSON.stringify(fdata);
+$.ajax({
+type: 'POST',
+url: '/home/contact',
+data: info,
+contentType: 'application/json'
+});
+}")
+}
