@@ -22,10 +22,14 @@ namespace aDigitalWebSite.Web
 		{
 #if DEBUG
 			return WebHost.CreateDefaultBuilder(args)
-							  .UseApplicationInsights()
+							.UseApplicationInsights()
 							.UseStartup<Startup>()
 							.UseKestrel()
-					   		.UseUrls(new string[] { "http://0.0.0.0:5001", "http://10.0.0.225:5001" })
+						  	.UseUrls(new string[] {
+				"http://0.0.0.0:5001",
+				"http://10.0.0.225:5001",
+				//"http://192.168.30.110:5001"
+							})
 							.Build();
 #else
 			return WebHost.CreateDefaultBuilder(args)

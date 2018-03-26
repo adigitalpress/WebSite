@@ -19,21 +19,21 @@
         </div>
         <div class="row row-bottom-padded-sm">
             <div class="col-md-6" id="fh5co-content">
-                <form action="#" method="post">
+                <form action="/home/contact" method="post" id="contactForm">
                     <div class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" class="form-control" id="Name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="name">
+                        <input type="email" class="form-control" id="Email">
                     </div>
                     <div class="form-group">
                         <label for="message">Mensagem</label>
-                        <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="message" id="Message" cols="30" rows="10" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Enviar">
+                        <input type="button" class="btn btn-primary" value="Enviar" id="OKButton">
                     </div>
                 </form>
             </div>
@@ -50,3 +50,21 @@
         </div>
     </div>
 </div>
+@section DocumentReady{
+    $("#OKButton").on("click",submitform);
+}
+@section LocalScripts {
+    @Html.Raw(@"function submitform() {
+var fdata = {};
+fdata.Name = $('#Name').val();
+fdata.Email = $('#Email').val();
+fdata.Message = $('#Message').val();
+var info = JSON.stringify(fdata);
+$.ajax({
+type: 'POST',
+url: '/home/contact',
+data: info,
+contentType: 'application/json'
+});
+}")
+}
