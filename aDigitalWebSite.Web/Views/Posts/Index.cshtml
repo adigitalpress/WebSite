@@ -1,33 +1,45 @@
-﻿<div id="fh5co-intro" class="fh5co-section">
+﻿@section openGraphIntegration
+{
+    <meta property="og:title" content="@Model.Title - aDigital.Press"/>
+    <meta property="og:image" itemprop="image" content="@Model.HeadImage"/>
+    <meta property="og:url" content="http://aDigital.Press/Posts/@Model.SequentialId"/>
+    <meta property="og:site_name" content="aDigital.Press"/>
+    <meta property="og:description" content="@Model.Description"/>
+    <meta property="og:type" content="article" />
+}
+<div id="fh5co-intro" class="fh5co-section">
     <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 col-md-offset-2 text-justify" id="fh5co-content">
-            <span style="font-size: 9pt">Publicado em 10/01/2018 por Leonardo Ferreira</span>
-            <a href="/posts/2"><h2>Branco no Preto</h2></a>
-            <p>
-            <span>Ao falarmos em papel, pensamos de cara em uma folha A4 tradicional, branca, com seus 29,7 cm de altura e 21 cm de largura. Nem todo mundo pensa assim, vide <a href="https://www.behance.net/annatakacs">Anna Takács</a> que criou este maravilhoso kit 100% em papeis de base 100% preta!</span><br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/4bae1a55727473.59915e20839ae.jpg" alt="Kit E.A.S.E." class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/a4407755727473.59915e2082a3f.jpg" alt="Kit E.A.S.E. side" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/6d335655727473.5990f7c368676.jpg" alt="Kit E.A.S.E. back" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/80ec6555727473.5990f7c365802.jpg" alt="Pasta" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/19173c55727473.5990f7c3672f3.jpg" alt="Pasta Detalhe" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/60455855727473.5990f7c25ccb8.jpg" alt="Pasta Lacre" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/ed7a0455727473.5990f7c25c7c2.jpg" alt="Pasta Lacre Abrindo" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/f33c0955727473.59b56ca866780.jpg" alt="Pasta Tamanho" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/de3c5a55727473.5990f7c364f1a.jpg" alt="Porta Cartoes" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/edc25355727473.5990f7c366db3.jpg" alt="Porta Cartoes Close-up" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/11dac055727473.59915e2083200.jpg" alt="Caderneta de Anotacoes" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/cfd4f855727473.59915e2082313.jpg" alt="Caderneta Lateral" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/2bc73255727473.5990f7c365d5f.jpg" alt="Caderneta e Lapis" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/fa59f155727473.5990f7c2d8d6e.jpg" alt="Caderneta detalhe" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/c24abd55727473.5990f7c2d907f.jpg" alt="Caderneta remove adesivo" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/1f1e0555727473.5990f7c367bfb.jpg" alt="interior caderneta e porta cartao" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/d1f96355727473.5990ffbfa7e24.jpg" alt="Kit de Lapis" class="img-responsive"/><br/>
-            </p>
-            <p>
-            <span>O kit é feito com impressão digital em diversas gramaturas de papel originalmente preto. Segundo a artista, a impressão do preto por cima da folha branca dificulta bastante a escrita e/ou desenho pois não permite que o grafite branco adera-se ao papel causando borrões ao toque, e como o kit é voltado para trabalhos manuais, inaceitável.</span>
-            </p>
-        </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-md-offset-2 text-justify" id="fh5co-content">
+                    <span style="font-size: 9pt">Publicado em @Model.PublishedOn.ToString("dd/MM/yyyy") por @Model.PublishedBy</span>
+                    <a href="/posts/@Model.SequentialId"><h2>@Model.Title</h2></a>
+                    @Html.Raw(@Model.Body)
+                    </div>
+                </div>
+            <hr/>
+
     </div>
     </div>
-</div>
+
+        <div class="row row-bottom-padded-sm">
+            <div class="col-md-8 col-md-offset-2 text-justify" id="fh5co-content">
+        <div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = 'http://adigital.press/posts/@Model.SequentialId'
+this.page.identifier = '@Model.UUID';
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://adigital-press.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        </div></div>
+    </div>

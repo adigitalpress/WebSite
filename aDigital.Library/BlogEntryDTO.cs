@@ -13,21 +13,23 @@ namespace aDigital.Library
 		DateTime PublishedOn { get; }
 		string HeadImage { get; }
 		int SequentialId { get; }
-
+		string Description { get; }
+		Guid UUID { get; }
 		void Publish();
 	}
 
-	public abstract class BlogEntryDTO : IBlogEntry
+	public class BlogEntryDTO : IBlogEntry
 	{
-		public string Title { get; set; }
-		public string Body { get; set; }
-		public IEnumerable<string> Tags { get; set; }
-		public string PublishedBy { get; set; }
-		public DateTime PublishedOn { get; set; }
-		public string HeadImage { get; set; }
-		public string URLTitle { get; set; }
-		public int SequentialId { get; }
-
-		public abstract void Publish();
+		public virtual string Title { get; set; }
+		public virtual string Body { get; set; }
+		public virtual IEnumerable<string> Tags { get; set; }
+		public virtual string PublishedBy { get; set; }
+		public virtual DateTime PublishedOn { get; set; }
+		public virtual string HeadImage { get; set; }
+		public virtual string URLTitle { get; set; }
+		public virtual string Description { get; set; }
+		public virtual int SequentialId { get; set; }
+		public virtual Guid UUID { get; set; }
+		public virtual void Publish() { throw new NotImplementedException(); }
 	}
 }

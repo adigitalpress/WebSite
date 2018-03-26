@@ -25,12 +25,13 @@ namespace aDigital.Blog.Infra.SpecificDTOs
 		public string HeadImage { get; set; }
 
 		public string URLTitle { get; set; }
-
+		public Guid UUID { get; set; }
 		public void Publish()
 		{
 			throw new NotImplementedException();
 		}
 
 		public int SequentialId { get { return int.Parse(this.RowKey); } }
+		public string Description { get; set; }
 	}
 }

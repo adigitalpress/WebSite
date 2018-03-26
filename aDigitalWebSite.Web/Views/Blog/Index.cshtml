@@ -1,4 +1,5 @@
-﻿@{
+﻿@using aDigital.Library;
+@{
     ViewData["Title"] = "Blog";
 }
 @section openGraphIntegration
@@ -10,6 +11,8 @@
     <meta property="og:description" content="Artigos e Opniões sobre o mundo gráfico"/>
     <meta property="og:type" content="article" />
 }
+@model IEnumerable<IBlogEntry>
+
 <div id="fh5co-intro" class="fh5co-section">
     <div class="container">
 <div id="loading" class="fh5co-section">
@@ -19,52 +22,17 @@
     </div>
 </div>
 <div id="posts" style="display:none;">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-md-offset-2 text-justify" id="fh5co-content">
-            <span style="font-size: 9pt">Publicado em 10/01/2018 por Leonardo Ferreira</span>
-            <a href="/posts/1"><h2>Branco no Preto</h2></a>
-            <p>
-            <span>Ao falarmos em papel, pensamos de cara em uma folha A4 tradicional, branca, com seus 29,7 cm de altura e 21 cm de largura. Nem todo mundo pensa assim, vide <a href="https://www.behance.net/annatakacs">Anna Takács</a> que criou este maravilhoso kit 100% em papeis de base 100% preta!</span><br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/4bae1a55727473.59915e20839ae.jpg" alt="Kit E.A.S.E." class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/a4407755727473.59915e2082a3f.jpg" alt="Kit E.A.S.E. side" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/6d335655727473.5990f7c368676.jpg" alt="Kit E.A.S.E. back" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/80ec6555727473.5990f7c365802.jpg" alt="Pasta" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/19173c55727473.5990f7c3672f3.jpg" alt="Pasta Detalhe" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/60455855727473.5990f7c25ccb8.jpg" alt="Pasta Lacre" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/ed7a0455727473.5990f7c25c7c2.jpg" alt="Pasta Lacre Abrindo" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/f33c0955727473.59b56ca866780.jpg" alt="Pasta Tamanho" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/de3c5a55727473.5990f7c364f1a.jpg" alt="Porta Cartoes" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/edc25355727473.5990f7c366db3.jpg" alt="Porta Cartoes Close-up" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/11dac055727473.59915e2083200.jpg" alt="Caderneta de Anotacoes" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/cfd4f855727473.59915e2082313.jpg" alt="Caderneta Lateral" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/2bc73255727473.5990f7c365d5f.jpg" alt="Caderneta e Lapis" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/fa59f155727473.5990f7c2d8d6e.jpg" alt="Caderneta detalhe" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/c24abd55727473.5990f7c2d907f.jpg" alt="Caderneta remove adesivo" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/1f1e0555727473.5990f7c367bfb.jpg" alt="interior caderneta e porta cartao" class="img-responsive"/><br/>&middot;<br/>
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/d1f96355727473.5990ffbfa7e24.jpg" alt="Kit de Lapis" class="img-responsive"/><br/>
-            </p>
-            <p>
-            <span>O kit é feito com impressão digital em diversas gramaturas de papel originalmente preto. Segundo a artista, a impressão do preto por cima da folha branca dificulta bastante a escrita e/ou desenho pois não permite que o grafite branco adera-se ao papel causando borrões ao toque, e como o kit é voltado para trabalhos manuais, inaceitável.</span>
-            </p>
-        </div>
-    </div>
-            <hr>
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-md-offset-2 text-justify" id="fh5co-content">
-            <span style="font-size: 9pt">Publicado em 10/01/2018 por Leonardo Ferreira</span>
-            <a href="/post/0"><h2>Introduzindo o nosso blog</h2></a>
-            <p>
-            <span>Cotidianamente, nós aqui na aDigital.Press, ficamos impressionados com a criatividade e as realizações de designers, engenheiros, fotógrafos e outros profissionais artísticos. Estamos lançando o blog com o intuito de promover não apenas a criação artística, mas para mostrar o poder da combinação de um artista com uma excelente gráfica.</span><br/>
-            <span>Queremos que esse blog se torne um repositório não apenas de artigos e opniões, mas também de cases de sucesso de todo mundo. Cases de insucesso também são muito bem vindos, pois podemos todos aprender com o erro dos outros. Aqui todo tipo de material e acabamento é vindo!</span>
-            </p>
-            <p><img src="https://m.popkey.co/991451/kMlYw.gif" alt="TA DA!" class="center-block"/></p>
-            <p>
-            <span>Se você possui um trabalho que deseja publicar aqui, entre em contato <a href="mailto:blog@aDigital.Press">através do blog@aDigital.Press</a>. Após o contato inicial iremos apenas garantir a originalidade dos itens (sim, nós damos muito valor a propriedade intelectual) e avaliar o resultado de acordo com sua originalidade, inovação e dificuldade de execução apenas para garantir que o conteúdo do blog não fique repetitivo. Obviamente, todos os créditos serão concedidos aos envolvidos (artistas, arte finalistas, impressores, acabamentistas e etc...)<br/></span>
-            <span>Bom, por hoje é só!</span>
-            </p>
-        </div>
-    </div>
-</div>
+
+            @foreach (IBlogEntry entry in Model){
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-md-offset-2 text-justify" id="fh5co-content">
+                    <span style="font-size: 9pt">Publicado em @entry.PublishedOn.ToString("dd/MM/yyyy") por @entry.PublishedBy</span>
+                    <a href="/posts/@entry.SequentialId"><h2>@entry.Title</h2></a>
+                    @Html.Raw(@entry.Body)
+                    </div>
+                </div>
+            <hr/>
+            }
 <div id="nextPrevious">
     
 </div>
