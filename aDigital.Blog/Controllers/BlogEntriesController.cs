@@ -21,8 +21,16 @@ namespace aDigital.Blog.Controllers
 		[HttpGet("/blogEntries/{id?}")]
 		public async Task<IEnumerable<IBlogEntry>> Get(string id)
 		{
-			var res = await _services.List(id);
-			return new List<IBlogEntry>() { res };
+			IEnumerable<IBlogEntry> res = null;
+			if (string.IsNullOrEmpty(id))
+			{
+				res = await _services.List(10, 0);
+			}
+			else
+			{
+				res = new List<IBlogEntry> { await _services.List(id) };
+			}
+			return res;
 		}
 	}
 }

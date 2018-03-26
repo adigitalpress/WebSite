@@ -21,7 +21,8 @@ namespace aDigital.Blog.Infra
 
 		public async Task<IEnumerable<IBlogEntry>> List(int pageSize, int pageNumber)
 		{
-			return await _repo.List();
+			var posts = await _repo.List();
+			return posts.OrderByDescending(a => a.PublishedOn);
 		}
 
 		public async Task<IBlogEntry> List(string id)
