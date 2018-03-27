@@ -29,4 +29,10 @@
   <ItemGroup>
     <ProjectReference Include="..\aDigital.Library\aDigital.Library.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\robots.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\robots.txt" />
+  </ItemGroup>
 </Project>

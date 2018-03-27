@@ -13,16 +13,19 @@ namespace aDigital.Blog.Infra
 	{
 		string _storageConnectionString;
 		public CloudTable _table;
-		public BlogRepository(string storageConnectionString)
+		ILogger _logger;
+		public BlogRepository(string storageConnectionString, ILogger logger)
 		{
 			_storageConnectionString = storageConnectionString;
 			CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_storageConnectionString);
 			var tableClient = storageAccount.CreateCloudTableClient();
 			_table = tableClient.GetTableReference("blogPosts");
+			_logger = logger;
 		}
-		public BlogRepository()
+		public BlogRepository(ILogger logger = null)
 		{
 			//constructor for testing propurses
+			_logger = logger;
 		}
 
 		public string Config()
@@ -32,18 +35,28 @@ namespace aDigital.Blog.Infra
 
 		public async Task<IEnumerable<IBlogEntry>> List()
 		{
-			var query = new TableQuery<BlogEntryTableEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "aDigital"));
-			TableContinuationToken token = null;
-			List<BlogEntryTableEntity> posts = new List<BlogEntryTableEntity>();
-
-			do
+			try
 			{
-				var result = await _table.ExecuteQuerySegmentedAsync(query, token);
-				posts.AddRange(result.Results);
-				token = result.ContinuationToken;
-			} while (token != null);
+				var query = new TableQuery<BlogEntryTableEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "aDigital"));
+				TableContinuationToken token = null;
+				List<BlogEntryTableEntity> posts = new List<BlogEntryTableEntity>();
 
-			return posts;
+				do
+				{
+					var result = await _table.ExecuteQuerySegmentedAsync(query, token);
+					posts.AddRange(result.Results);
+					token = result.ContinuationToken;
+				} while (token != null);
+
+				return posts;
+			}
+			catch (Exception ex)
+			{
+				ExceptionTelemetry t = new ExceptionTelemetry();
+				t.Exception = ex;
+				_logger.LogException(t);
+				throw;
+			}
 		}
 
 		public async Task<IBlogEntry> List(string id)
