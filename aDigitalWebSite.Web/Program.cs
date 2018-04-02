@@ -26,9 +26,9 @@ namespace aDigitalWebSite.Web
 							.UseStartup<Startup>()
 							.UseKestrel()
 						  	.UseUrls(new string[] {
-				"http://0.0.0.0:5001",
-				"http://10.0.0.225:5001",
-				//"http://192.168.30.110:5001"
+				"http://0.0.0.0:5001"
+				//,"http://10.0.0.225:5001"
+				//,"http://192.168.30.110:5001"
 							})
 							.Build();
 #else
