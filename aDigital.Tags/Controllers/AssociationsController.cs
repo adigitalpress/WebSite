@@ -26,9 +26,14 @@ namespace aDigital.Tags.Controllers
 
 		// GET api/values/5
 		[HttpGet("{id}")]
-		public string Get(int id)
+		public async Task<IEnumerable<TagAssociationContext>> Get(string id)
 		{
-			return "value";
+			if (string.IsNullOrEmpty(id))
+			{
+				return null;
+			}
+			var result = await tagsService.SearchTagAssociationsAsync(id);
+			return result;
 		}
 
 		// POST api/values

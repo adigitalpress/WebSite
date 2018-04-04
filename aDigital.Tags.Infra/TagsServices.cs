@@ -27,7 +27,7 @@ namespace aDigital.Tags.Infra
 		public async Task Associate(string tagTitle, string objectId, int contextId)
 		{
 			var tag = await tagRepository.GetTag(tagTitle);
-			if (tag.Associations == null || !tag.Associations.Select(i => i.ObjectId.ToString()).Contains(objectId))
+			if (tag.Associations == null || !tag.Associations.Select(i => i.ObjectId).Contains(objectId))
 			{
 				tag.AssociateTo(objectId, contextId);
 			}
@@ -36,7 +36,7 @@ namespace aDigital.Tags.Infra
 
 		public async Task<IEnumerable<TagAssociationContext>> SearchTagAssociationsAsync(string search)
 		{
-			var itemsToSearchFor = search.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+			var itemsToSearchFor = search.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 			var tasks = new List<Task>();
 			var result = Enumerable.Empty<TagAssociationContext>();
 			foreach (var item in itemsToSearchFor)

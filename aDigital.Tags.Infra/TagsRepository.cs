@@ -53,7 +53,7 @@ namespace aDigital.Tags.Infra
 				CompareOptions.IgnoreNonSpace;
 			var ids = tags
 						.Where(t => compareInfo.IndexOf(t.Title, title, options) > -1 ||
-									   compareInfo.IndexOf(t._synonymString, title, options) > -1)
+									   compareInfo.IndexOf(t._synonymString ?? "", title, options) > -1)
 						.SelectMany(t => t.Associations)
 						.Where(a => a.ContextId == (context ?? a.ContextId));
 
