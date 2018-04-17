@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using aDigital.Library;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aDigital.ProductsAndServices.Controllers
 {
-	[Route("api/[controller]")]
-	public class ValuesController : Controller
+	[Route("")]
+	public class ProductsController : Controller
 	{
+		IProductServices _productServices;
+		ILogger _logger;
+
+		public ProductsController(IProductServices productServices, ILogger logger)
+		{
+			_productServices = productServices;
+			_logger = logger;
+		}
+
 		// GET api/values
 		[HttpGet]
 		public IEnumerable<string> Get()
@@ -23,16 +33,11 @@ namespace aDigital.ProductsAndServices.Controllers
 			return "value";
 		}
 
-		// POST api/values
-		[HttpPost]
-		public void Post([FromBody]string value)
-		{
-		}
-
 		// PUT api/values/5
-		[HttpPut("{id}")]
-		public void Put(int id, [FromBody]string value)
+		[HttpPut]
+		public async Task Put([FromBody]ProductDTO value)
 		{
+			await _productServices.CreateProduct(value);
 		}
 
 		// DELETE api/values/5

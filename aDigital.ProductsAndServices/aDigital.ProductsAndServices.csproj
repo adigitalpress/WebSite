@@ -18,4 +18,10 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\aDigital.Library\aDigital.Library.csproj" />
+    <ProjectReference Include="..\aDigital.Logging\aDigital.Logging.csproj" />
+    <ProjectReference Include="..\aDigital.ProductsAndServices.Infra\aDigital.ProductsAndServices.Infra.csproj" />
+    <ProjectReference Include="..\aDigital.ProductsAndServices.Domain\aDigital.ProductsAndServices.Domain.csproj" />
+  </ItemGroup>
 </Project>
