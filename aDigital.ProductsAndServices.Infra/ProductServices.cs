@@ -20,6 +20,18 @@ namespace aDigital.ProductsAndServices.Infra
 			_tagServicesUrl = configuration["tagServicesBaseUrl"];
 		}
 
+		public async Task<IEnumerable<IProduct>> GetProducts()
+		{
+			var products = await productRepository.GetProducts();
+			return FilterByActive(products).OrderBy(i => i.Title);
+		}
+
+		public async Task<IEnumerable<IProduct>> GetProductById(int id)
+		{
+			var products = await productRepository.GetProductsById(new int[] { id });
+			return FilterByActive(products).OrderBy(i => i.Title);
+		}
+
 		public async Task<IEnumerable<IProduct>> SearchProduct(string query)
 		{
 			var cli = new RestClient(_tagServicesUrl);
@@ -34,7 +46,12 @@ namespace aDigital.ProductsAndServices.Infra
 			var merge = from p in products
 						join i in productsIds on p.Id equals i
 						select p;
-			return merge;
+			return FilterByActive(merge);
+		}
+
+		private IEnumerable<IProduct> FilterByActive(IEnumerable<IProduct> list)
+		{
+			return list.Where(i => i.Active);
 		}
 
 		public async Task CreateProduct(IProduct product)

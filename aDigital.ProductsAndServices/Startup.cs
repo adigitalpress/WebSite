@@ -27,7 +27,9 @@ namespace aDigital.ProductsAndServices
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public IServiceProvider ConfigureServices(IServiceCollection services)
 		{
-			services.AddMvc();
+			services
+				.AddMvc()
+				.AddJsonOptions(options => options.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore);
 
 			var builder = new ContainerBuilder();
 

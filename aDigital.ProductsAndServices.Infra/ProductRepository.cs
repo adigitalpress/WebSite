@@ -60,10 +60,12 @@ namespace aDigital.ProductsAndServices.Infra
 			{
 				return null;
 			}
+			var products = new List<ProductTableEntity>();
 			if (productIds.Count() == 1)
 			{
-				var op = TableOperation.Retrieve("aDigital", productIds.First().ToString());
+				var op = TableOperation.Retrieve<ProductTableEntity>("aDigital", productIds.First().ToString());
 				var query = await _table.ExecuteAsync(op);
+				products.Add((ProductTableEntity)query.Result);
 			}
 			else
 			{
@@ -76,13 +78,13 @@ namespace aDigital.ProductsAndServices.Infra
 				var gFilter = TableQuery.CombineFilters(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "aDigital"), TableOperators.And, orClause);
 				var query = new TableQuery<ProductTableEntity>().Where(gFilter);
 				TableContinuationToken token = null;
-				var tags = new List<ProductTableEntity>();
+
 				try
 				{
 					do
 					{
 						var result = await _table.ExecuteQuerySegmentedAsync(query, token);
-						tags.AddRange(result.Results);
+						products.AddRange(result.Results);
 						token = result.ContinuationToken;
 					} while (token != null);
 				}
@@ -94,7 +96,23 @@ namespace aDigital.ProductsAndServices.Infra
 					throw;
 				}
 			}
-			return null;
+			return products;
+		}
+
+		public async Task<IEnumerable<IProduct>> GetProducts()
+		{
+			var filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "aDigital");
+			TableContinuationToken token = null;
+			var products = new List<IProduct>();
+			var query = new TableQuery<ProductTableEntity>().Where(filter);
+
+			do
+			{
+				var result = await _table.ExecuteQuerySegmentedAsync(query, token);
+				products.AddRange(result.Results);
+			} while (token != null);
+
+			return products;
 		}
 	}
 }

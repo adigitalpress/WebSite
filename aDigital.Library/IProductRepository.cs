@@ -9,5 +9,6 @@ namespace aDigital.Library
 	{
 		Task Create(IProduct product);
 		Task<IEnumerable<IProduct>> GetProductsById(IEnumerable<int> productIds);
+		Task<IEnumerable<IProduct>> GetProducts();
 	}
 }
