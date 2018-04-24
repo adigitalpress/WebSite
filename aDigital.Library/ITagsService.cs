@@ -9,5 +9,6 @@ namespace aDigital.Library
 		Task CreateTag(string tagTitle);
 		Task<IEnumerable<TagAssociationContext>> SearchTagAssociationsAsync(string search);
 		Task Associate(string tagTitle, string objectId, int contextId);
+		Task<IEnumerable<string>> GetTags();
 	}
 }

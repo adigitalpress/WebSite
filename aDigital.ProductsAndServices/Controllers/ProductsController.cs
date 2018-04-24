@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using aDigital.Library;
+using aDigital.Library.ProductsAndServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aDigital.ProductsAndServices.Controllers
@@ -60,9 +61,17 @@ namespace aDigital.ProductsAndServices.Controllers
 
 		// PUT api/values/5
 		[HttpPut]
-		public async Task Put([FromBody]ProductDTO value)
+		public async Task Put([FromBody]ProductCreationDTO value)
 		{
-			await _productServices.CreateProduct(value);
+			var dto = new ProductDTO();
+			dto.Active = true;
+			dto.Title = value.Title;
+			dto.Description = value.Description;
+			dto.MinimalAmount = int.Parse(value.MinimalAmount);
+			dto.StartsAt = decimal.Parse(value.StartsAt.Replace("R", "").Replace("$", "").Replace(",", ".").Replace(" ", ""));
+			dto.Tags = value.Tags.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+			await _productServices.CreateProduct(dto);
 		}
 	}
 }

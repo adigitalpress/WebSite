@@ -6,6 +6,8 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,7 +26,19 @@ namespace aDigital.Tags
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public IServiceProvider ConfigureServices(IServiceCollection services)
 		{
-			services.AddMvc();
+			services
+				.AddMvc()
+				.AddJsonOptions(options => options.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore);
+			services.AddCors((a) => a.AddPolicy("AllowAnyOrigin", (obj) =>
+			{
+				obj.AllowAnyOrigin();
+				obj.AllowAnyMethod();
+				obj.AllowAnyHeader();
+			}));
+			services.Configure<MvcOptions>(options =>
+			{
+				options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAnyOrigin"));
+			});
 
 			var builder = new ContainerBuilder();
 
@@ -62,6 +76,7 @@ namespace aDigital.Tags
 			}
 
 			app.UseMvc();
+			app.UseCors(c => c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 		}
 	}
 }

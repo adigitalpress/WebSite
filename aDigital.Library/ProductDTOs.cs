@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using aDigital.Library;
 
-namespace aDigital.ProductsAndServices
+namespace aDigital.Library.ProductsAndServices
 {
 	public class ProductDTO : ProductQueryDTO, IProduct
 	{
@@ -22,5 +22,14 @@ namespace aDigital.ProductsAndServices
 		public decimal StartsAt { get; set; }
 		public string Description { get; set; }
 		public IEnumerable<string> Images { get; set; }
+	}
+
+	public class ProductCreationDTO
+	{
+		public string MinimalAmount { get; set; }
+		public string Title { get; set; }
+		public string StartsAt { get; set; }
+		public string Description { get; set; }
+		public string Tags { get; set; }
 	}
 }

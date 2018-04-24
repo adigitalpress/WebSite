@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace aDigital.ProductsAndServices
 {
@@ -30,6 +33,16 @@ namespace aDigital.ProductsAndServices
 			services
 				.AddMvc()
 				.AddJsonOptions(options => options.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore);
+			services.AddCors((a) => a.AddPolicy("AllowAnyOrigin", (obj) =>
+			{
+				obj.AllowAnyOrigin();
+				obj.AllowAnyMethod();
+				obj.AllowAnyHeader();
+			}));
+			services.Configure<MvcOptions>(options =>
+			{
+				options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAnyOrigin"));
+			});
 
 			var builder = new ContainerBuilder();
 
@@ -67,6 +80,7 @@ namespace aDigital.ProductsAndServices
 			}
 
 			app.UseMvc();
+			app.UseCors(c => c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 		}
 	}
 }

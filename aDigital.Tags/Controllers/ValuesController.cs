@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using aDigital.Library;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aDigital.Tags.Controllers
 {
-	[Route("api/[controller]")]
+	[Route("")]
 	public class ValuesController : Controller
 	{
+		ITagsService tagsService;
+		public ValuesController(ITagsService tagService)
+		{
+			this.tagsService = tagService;
+		}
 		// GET api/values
 		[HttpGet]
-		public IEnumerable<string> Get()
+		public async Task<IEnumerable<string>> Get()
 		{
-			return new string[] { "value1", "value2" };
+			return await tagsService.GetTags();
 		}
 
 		// GET api/values/5

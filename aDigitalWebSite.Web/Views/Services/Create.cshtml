@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+<!--
+<div class="fh5co-slider">
+    <div class="container">
+        <img src="/images/slider_3.jpg" alt="Serviços" class="img-responsive">
+    </div>
+</div>
+-->
+@section openGraphIntegration
+    {
+
+}
+<div id="fh5co-intro" class="fh5co-section">
+    <div class="container">
+        <h1 class="section-header">Criação de Novo Produto/Serviços</h1>
+        <p>Preencha todos os campos. Cuidado com o portugues.</p>
+        <form>
+            <div class="col-md-6 form-line">
+                <div class="form-group">
+                    <label for="title">Produto: </label>
+                    <input type="text" class="form-control" id="title" placeholder="Campo Obrigatório" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Descrição: </label>
+                    <textarea id="description" class="form-control" cols="40" rows="6"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="startsAt">A partir de: </label>
+                    <input type="text" id="startsAt" class="form-control" placeholder="R$ 1,99 - Campo Obrigatório" />
+                </div>
+                <div class="form-group">
+                    <label for="tags">Tags: </label>
+                    <input type="text" id="tags" class="form-control" placeholder="palavras chaves que identificam o produto" />
+                </div>
+                <div class="form-group">
+                    <label for="minimum">Quantidade Minina: </label>
+                    <input type="text" id="minimum" class="form-control" placeholder="1 unidades" />
+                </div>
+                <div class="form-group bootstrap-tagsinput">
+                    <span class="label label-info" style="        margin-right: 2px;
+        cursor: pointer;" id="tagModel" hidden="hidden">
+                    </span>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-default submit" onclick="CreateProduct()">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+        <!--
+        <div class="row row-bottom-padded-sm">
+            <div class="col-md-6">
+                <p><img src="/images/slider_3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive img-bordered"></p>
+            </div>
+            <div class="col-md-6 padded-top">
+                <h3>Creative Title Here</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum fuga rerum doloremque dolore, molestias eligendi. Nulla aliquam aut doloribus tenetur repellendus omnis dicta, unde magni.</p>
+                <ul class="ul_style_1">
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Consectetur adipisicing elit</li>
+                    <li>Recusandae laboriosam eligendi maiores</li>
+                    <li>Sapiente repudiandae perspiciatis</li>
+                </ul>
+            </div>
+        </div> -->
+        <div class="row row-bottom-padded-sm">
+            <div class="col-md-8 col-md-offset-2 text-justify" id="fh5co-content">
+            </div>
+        </div>
+    </div>
+</div>
+<environment include="Development">
+    <script src="/jss/productsCreation.js"></script>
+</environment>
+@section DocumentReady{
+    GetTags();
+}

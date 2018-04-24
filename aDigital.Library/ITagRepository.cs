@@ -10,5 +10,6 @@ namespace aDigital.Library
 		Task CreateTag(ITag tag);
 		Task<ITag> GetTag(string title);
 		Task SaveTag(ITag tag);
+		Task<IEnumerable<string>> GetTags();
 	}
 }

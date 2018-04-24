@@ -57,5 +57,10 @@ namespace aDigital.Tags.Infra
 						.Select(i => i.Key);
 			return result;
 		}
+
+		public Task<IEnumerable<string>> GetTags()
+		{
+			return tagRepository.GetTags();
+		}
 	}
 }

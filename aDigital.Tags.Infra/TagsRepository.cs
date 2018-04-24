@@ -107,6 +107,32 @@ namespace aDigital.Tags.Infra
 			}
 		}
 
+		public async Task<IEnumerable<string>> GetTags()
+		{
+			try
+			{
+				var query = new TableQuery<TagTableEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "aDigital"));
+				TableContinuationToken token = null;
+				var tags = new List<TagTableEntity>();
+
+				do
+				{
+					var result = await _table.ExecuteQuerySegmentedAsync(query, token);
+					tags.AddRange(result.Results);
+					token = result.ContinuationToken;
+				} while (token != null);
+
+				return tags.Select(i => i.Title);
+			}
+			catch (Exception ex)
+			{
+				ExceptionTelemetry t = new ExceptionTelemetry();
+				t.Exception = ex;
+				_logger.LogException(t);
+				throw;
+			}
+		}
+
 		public async Task SaveTag(ITag tag)
 		{
 			if (tag == null)
