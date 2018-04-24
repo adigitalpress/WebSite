@@ -32,19 +32,21 @@
                 </div>
                 <div class="form-group">
                     <label for="tags">Tags: </label>
-                    <input type="text" id="tags" class="form-control" placeholder="palavras chaves que identificam o produto" />
+                    <div class="form-group bootstrap-tagsinput">
+                        <span class="label label-info" style=" margin-right: 2px;
+        cursor: pointer;
+        display: none;
+    " id="tagModel">
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="minimum">Quantidade Minina: </label>
                     <input type="text" id="minimum" class="form-control" placeholder="1 unidades" />
                 </div>
-                <div class="form-group bootstrap-tagsinput">
-                    <span class="label label-info" style="        margin-right: 2px;
-        cursor: pointer;" id="tagModel" hidden="hidden">
-                    </span>
-                </div>
+
                 <div class="form-group">
-                    <button type="button" class="btn btn-default submit" onclick="CreateProduct()">Cadastrar</button>
+                    <button type="button" class="btn btn-default submit" id="buttonCreate" onclick="CreateProduct()">Cadastrar</button>
                 </div>
             </div>
         </form>

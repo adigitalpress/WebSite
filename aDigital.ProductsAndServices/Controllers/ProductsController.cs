@@ -67,7 +67,7 @@ namespace aDigital.ProductsAndServices.Controllers
 			dto.Active = true;
 			dto.Title = value.Title;
 			dto.Description = value.Description;
-			dto.MinimalAmount = int.Parse(value.MinimalAmount);
+			dto.MinimalAmount = int.Parse(value.MinimalAmount ?? "0");
 			dto.StartsAt = decimal.Parse(value.StartsAt.Replace("R", "").Replace("$", "").Replace(",", ".").Replace(" ", ""));
 			dto.Tags = value.Tags.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 

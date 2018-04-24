@@ -2,11 +2,13 @@
     var title = $("#title").val();
     var description = $("#description").val();
     var startsAt = $("#startsAt").val();
-    var tags = $("#tags").val();
     var minimum = $("#minimum").val();
     if(title == "" || startsAt == ""){ 
-        alert("\"Nome\" e \"A partir de\" são obrigatórios")
+        alert("\"Nome\" e \"A partir de\" são obrigatórios");
+        return;
     }
+    disableCreateButton();
+    var tags = GetSelectedTagsString();
     var pack = {
         title:title, 
         description:description, 
@@ -18,22 +20,39 @@
     data: JSON.stringify(pack),
     contentType: "application/json",
     method:"PUT",
-    url:"http://localhost:5003",
+    url:productServiceRootUrl,
     success:function (data){
         alert('Item Cadastrado Com Sucesso');
         $("#title").val("");
         $("#description").val("");
         $("#startsAt").val("");
-        $("#tags").val("");
         $("#minimum").val("");
+        ClearTagSelection();
+        enableCreateButton();
+    },
+    error:function (data){
+        alert('Ocorreu um erro ao cadastrar este item. Tente novamente mais tarde.');
+        enableCreateButton();
     }
-    })
+    });
+}
+
+function disableCreateButton(){
+    var btn = $("#buttonCreate");
+    btn.attr('disabled','disabled');
+    btn.val('Cadastrando...');
+}
+
+function enableCreateButton(){
+    var btn = $("#buttonCreate");
+    btn.removeAttr('disabled');
+    btn.val('Cadastrar');
 }
 
 function GetTags(){
     $.ajax({
         method:"GET",
-        url:"http://localhost:5002",
+        url:tagServiceRootUrl,
         success:function (data){
             var $model = $("#tagModel");
             data.forEach(function(ele){
@@ -41,12 +60,10 @@ function GetTags(){
                 $newItem.html(ele);
                 $newItem.on('click',function(e){
                     if(this.classList.contains('tag-selected')){
-                        this.classList.add('label-info');
-                        this.classList.remove('tag-selected');
+                        UnselectTag(this);
                     }
                     else{
-                        this.classList.remove('label-info');
-                        this.classList.add('tag-selected');
+                        SelectTag(this)
                     }
                 });
                 $model.parent().append($newItem);
@@ -54,4 +71,37 @@ function GetTags(){
             });
         }
         });
+}
+
+function GetSelectedTagsString(){
+    var auxEle = $(".tag-selected");
+    if(!auxEle){
+        return "";
+    }
+    var result = "";
+    auxEle.toArray().forEach(function (item){
+        result += (" "+item.innerText);
+    });
+    return result;
+}
+
+function ClearTagSelection(){
+    var auxEle = $(".tag-selected");
+    if(!auxEle){
+        return "";
+    }
+    var result = "";
+    auxEle.toArray().forEach(function (item){
+        UnselectTag(item);
+    });
+}
+
+function UnselectTag(tagElement){
+    tagElement.classList.add('label-info');
+    tagElement.classList.remove('tag-selected');
+}
+
+function SelectTag(tagElement){
+    tagElement.classList.remove('label-info');
+    tagElement.classList.add('tag-selected');
 }
