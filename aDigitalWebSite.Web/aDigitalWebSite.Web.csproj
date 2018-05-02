@@ -6,9 +6,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.2.1" />
-    <PackageReference Include="BuildBundlerMinifier" Version="2.6.362" />
     <PackageReference Include="RestSharp" Version="106.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.375" />
   </ItemGroup>
 
   <ItemGroup>
