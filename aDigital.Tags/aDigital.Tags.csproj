@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <Folder Include="wwwroot\" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
+        <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    </ItemGroup>
+    <ItemGroup>
+        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\aDigital.Library\aDigital.Library.csproj" />
+        <ProjectReference Include="..\aDigital.Logging\aDigital.Logging.csproj" />
+        <ProjectReference Include="..\aDigital.Tags.Infra\aDigital.Tags.Infra.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="aDigital.Tags.Infra\obj\aDigital.Tags.Infra.csproj.nuget.cache" />
+      <None Remove="aDigital.Tags.Infra\obj\aDigital.Tags.Infra.csproj.nuget.g.props" />
+      <None Remove="aDigital.Tags.Infra\obj\aDigital.Tags.Infra.csproj.nuget.g.targets" />
+      <None Remove="aDigital.Tags.Infra\obj\Debug\netstandard2.0\aDigital.Tags.Infra.csprojResolveAssemblyReference.cache" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="aDigital.Tags.Infra\TagTableEntity.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Remove="aDigital.Tags.Infra\obj\project.assets.json" />
+    </ItemGroup>
+</Project>

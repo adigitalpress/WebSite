@@ -33,6 +33,17 @@ body {
     height: 100% !important
 }
 
+.badge-secondary {
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px
+
+}
+
+.badge-selected {
+    background: #FF5126
+}
+
 a {
     color: #FF5126;
     -webkit-transition: 0.5s;
