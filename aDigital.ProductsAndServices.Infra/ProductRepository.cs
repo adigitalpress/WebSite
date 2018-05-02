@@ -45,6 +45,7 @@ namespace aDigital.ProductsAndServices.Infra
 			p.StartsAt = product.StartsAt;
 			p.Tags = product.Tags;
 			p.Title = product.Title;
+			p.UnitName = product.UnitName;
 			p.Active = true;
 
 			var op = TableOperation.Insert(p);

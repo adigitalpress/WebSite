@@ -3,45 +3,44 @@
     ViewData["Title"] = "Blog";
 }
 @section openGraphIntegration
-{
-    <meta property="og:title" content="Blog aDigital.Press"/>
-    <meta property="og:image" itemprop="image" content="http://blob.adigital.press/images/logoBig.png"/>
-    <meta property="og:url" content="http://aDigital.Press/blog"/>
-    <meta property="og:site_name" content="aDigital.Press"/>
-    <meta property="og:description" content="Artigos e Opniões sobre o mundo gráfico"/>
+    {
+    <meta property="og:title" content="Blog aDigital.Press" />
+    <meta property="og:image" itemprop="image" content="http://blob.adigital.press/images/logoBig.png" />
+    <meta property="og:url" content="http://aDigital.Press/blog" />
+    <meta property="og:site_name" content="aDigital.Press" />
+    <meta property="og:description" content="Artigos e Opniões sobre o mundo gráfico" />
     <meta property="og:type" content="article" />
 }
 @model IEnumerable<IBlogEntry>
-
-<div id="fh5co-intro" class="fh5co-section">
-    <div class="container">
-<div id="loading" class="fh5co-section">
-    <div class="container text-center" >
-        <h2>Carregando Postagens...</h2>
-        <img src="https://ihsmarkit.com/images/ajax-loader.gif" alt="Carregando Blog" />
-    </div>
-</div>
-<div id="posts" style="display:none;">
-
-            @foreach (IBlogEntry entry in Model){
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-md-offset-2 text-justify" id="fh5co-content">
-                    <span style="font-size: 9pt">Publicado em @entry.PublishedOn.ToString("dd/MM/yyyy") por @entry.PublishedBy</span>
-                    <a href="/posts/@entry.SequentialId"><h2>@entry.Title</h2></a>
-                    @Html.Raw(@entry.Body)
-                    </div>
+    <div id="fh5co-intro" class="fh5co-section">
+        <div class="container">
+            <div id="loading" class="fh5co-section">
+                <div class="container text-center">
+                    <h2>Carregando Postagens...</h2>
+                    <img src="https://ihsmarkit.com/images/ajax-loader.gif" alt="Carregando Blog" />
                 </div>
-            <hr/>
-            }
-<div id="nextPrevious">
-    
-</div>
+            </div>
+            <div id="posts" style="        display: none;">
+                @foreach (IBlogEntry entry in Model)
+                {
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 mx-auto text-justify" id="fh5co-content">
+                            <span style="        font-size: 9pt">Publicado em @entry.PublishedOn.ToString("dd/MM/yyyy") por @entry.PublishedBy</span>
+                            <a href="/posts/@entry.SequentialId"><h2>@entry.Title</h2></a>
+                            @Html.Raw(@entry.Body)
+                        </div>
+                    </div>
+                    <hr />
+                }
+                <div id="nextPrevious">
+
+                </div>
+            </div>
         </div>
     </div>
-
     @section DocumentReady{
-    setTimeout(function(){
-    $("#loading").hide();
-    $("#posts").show();
-    },550);
-}
+        setTimeout(function(){
+        $("#loading").hide();
+        $("#posts").show();
+        },550);
+    }

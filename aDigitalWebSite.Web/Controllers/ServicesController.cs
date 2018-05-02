@@ -21,5 +21,10 @@ namespace aDigitalWebSite.Web.Controllers
 		{
 			return View();
 		}
+
+		public async Task<IActionResult> Preview()
+		{
+			return View();
+		}
 	}
 }

@@ -33,6 +33,17 @@ body {
     height: 100% !important
 }
 
+.badge-secondary {
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px
+
+}
+
+.badge-selected {
+    background: #FF5126
+}
+
 a {
     color: #FF5126;
     -webkit-transition: 0.5s;
@@ -412,9 +423,9 @@ h1, h2, h3, h4, h5, h6 {
                 color: #b3b3b3
             }
 
-                #fh5co-header #fh5co-main-nav ul li.has-sub > div > a:hover:after {
-                    color: #FF5126
-                }
+            #fh5co-header #fh5co-main-nav ul li.has-sub > div > a:hover:after {
+                color: #FF5126
+            }
 
         #fh5co-header #fh5co-main-nav ul li.has-sub .drop-down-menu {
             position: relative;
@@ -622,10 +633,10 @@ h1, h2, h3, h4, h5, h6 {
         color: #fff
     }
 
-    .fh5co-form-control:focus, .fh5co-form-control:active {
-        outline: none;
-        border: none
-    }
+.fh5co-form-control:focus, .fh5co-form-control:active {
+    outline: none;
+    border: none
+}
 
 .fh5co-form-locator {
     max-width: 500px;
@@ -809,16 +820,16 @@ h1, h2, h3, h4, h5, h6 {
         padding-right: 20px
     }
 
-    .fh5co-table tbody tr th, .fh5co-table tbody tr td {
-        padding-top: 30px;
-        padding-bottom: 30px;
-        padding-left: 20px;
-        padding-right: 20px
-    }
+.fh5co-table tbody tr th, .fh5co-table tbody tr td {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 20px
+}
 
-    .fh5co-table tbody tr:first-child th, .fh5co-table tbody tr:first-child td {
-        border-top: none
-    }
+.fh5co-table tbody tr:first-child th, .fh5co-table tbody tr:first-child td {
+    border-top: none
+}
 
 .owl-dots {
     position: absolute;

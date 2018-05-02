@@ -3,6 +3,7 @@
     var description = $("#description").val();
     var startsAt = $("#startsAt").val();
     var minimum = $("#minimum").val();
+    var unitName = $("#unitName").val();
     if(title == "" || startsAt == ""){ 
         alert("\"Nome\" e \"A partir de\" são obrigatórios");
         return;
@@ -14,7 +15,8 @@
         description:description, 
         startsAt:startsAt, 
         tags:tags,
-        minimal:minimum
+        minimalAmount:minimum,
+        unitName:unitName
         };
     $.ajax({
     data: JSON.stringify(pack),
@@ -27,6 +29,7 @@
         $("#description").val("");
         $("#startsAt").val("");
         $("#minimum").val("");
+        $("#unitName").val("");
         ClearTagSelection();
         enableCreateButton();
     },
@@ -59,7 +62,7 @@ function GetTags(){
                 var $newItem = $model.clone();
                 $newItem.html(ele);
                 $newItem.on('click',function(e){
-                    if(this.classList.contains('tag-selected')){
+                    if(this.classList.contains('badge-selected')){
                         UnselectTag(this);
                     }
                     else{
@@ -74,7 +77,7 @@ function GetTags(){
 }
 
 function GetSelectedTagsString(){
-    var auxEle = $(".tag-selected");
+    var auxEle = $(".badge-selected");
     if(!auxEle){
         return "";
     }
@@ -86,7 +89,7 @@ function GetSelectedTagsString(){
 }
 
 function ClearTagSelection(){
-    var auxEle = $(".tag-selected");
+    var auxEle = $(".badge-selected");
     if(!auxEle){
         return "";
     }
@@ -97,11 +100,9 @@ function ClearTagSelection(){
 }
 
 function UnselectTag(tagElement){
-    tagElement.classList.add('label-info');
-    tagElement.classList.remove('tag-selected');
+    tagElement.classList.remove('badge-selected');
 }
 
 function SelectTag(tagElement){
-    tagElement.classList.remove('label-info');
-    tagElement.classList.add('tag-selected');
+    tagElement.classList.add('badge-selected');
 }

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "Cadastro de Produtos";
 }
 <!--
 <div class="fh5co-slider">
@@ -15,7 +15,7 @@
 <div id="fh5co-intro" class="fh5co-section">
     <div class="container">
         <h1 class="section-header">Criação de Novo Produto/Serviços</h1>
-        <p>Preencha todos os campos. Cuidado com o portugues.</p>
+        <p>Preencha todos os campos. Cuidado com o português.</p>
         <form>
             <div class="col-md-6 form-line">
                 <div class="form-group">
@@ -24,16 +24,20 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Descrição: </label>
-                    <textarea id="description" class="form-control" cols="40" rows="6"></textarea>
+                    <textarea id="description" style="heigth:unset;" class="form-control" cols="40" rows="5"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="startsAt">A partir de: </label>
                     <input type="text" id="startsAt" class="form-control" placeholder="R$ 1,99 - Campo Obrigatório" />
                 </div>
                 <div class="form-group">
+                    <label for="startsAt">Nome da unidade: </label>
+                    <input type="text" id="unitName" class="form-control" placeholder="Unidades, Folhas, M2, Cento, Milheiro, etc..." />
+                </div>
+                <div class="form-group">
                     <label for="tags">Tags: </label>
                     <div class="form-group bootstrap-tagsinput">
-                        <span class="label label-info" style=" margin-right: 2px;
+                        <span class="badge-secondary" style=" margin-right: 2px;
         cursor: pointer;
         display: none;
     " id="tagModel">

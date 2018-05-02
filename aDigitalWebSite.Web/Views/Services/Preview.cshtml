@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Preview";
+}
+<!--
+<div class="fh5co-slider">
+    <div class="container">
+        <img src="/images/slider_3.jpg" alt="Serviços" class="img-responsive">
+    </div>
+</div>
+-->
+@section openGraphIntegration
+    {
+
+}
+<div id="fh5co-intro" class="fh5co-section">
+    <div class="container">
+        <h1 class="section-header">Preview Produto/Serviços</h1>
+        <div id="productsDiv" class="card-columns">
+            <div class="card" style="width: 18rem; display:none; column-break-inside: avoid" id="cardTemplate">
+                <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+                <div class="card-body">
+                    <h5 class="card-title" id="cardTitle">Impressão P&B</h5>
+                    <p class="card-text" id="cardText">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <span id="cardPrice">A partir de R$ 199,99</span>
+                    <p id="cardAmount">Minimo de 199 unidades</p>
+                    <button onclick="window.location = '/home/contact'" class="btn" id="cardButton">Pedir um Orçamento</button>
+                </div>
+            </div>
+        </div>
+        <div class="row row-bottom-padded-sm">
+            <div class="col-md-8 col-md-offset-2 text-justify" id="fh5co-content">
+            </div>
+        </div>
+    </div>
+</div>
+<environment include="Development">
+    <script src="/jss/productListing.js"></script>
+</environment>
+@section DocumentReady{
+    GetAllProducts();
+}
